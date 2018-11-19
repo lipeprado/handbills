@@ -1,0 +1,24 @@
+.signup {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapperForm {
+  display: flex;
+  width: 35%;
+  padding: 2rem;
+  flex-direction: column;
+}
+
+.input {
+  margin-bottom: 0.5rem !important;
+}
+.inputError {
+  color: #db3737;
+}
+
+.signupText {
+  margin-bottom: 2rem !important;
+}
