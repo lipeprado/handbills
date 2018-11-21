@@ -1,8 +1,12 @@
 import React, { Component } from "react";
+import moment from "moment";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import moment from "moment";
 import { Icon } from "@blueprintjs/core";
+
+// Actions
+import { setMonth } from "../../actions/calendar";
+
 // Styles
 import styles from "./styles.module.scss";
 
@@ -20,25 +24,29 @@ class ChooseMonth extends Component {
 
   _handleIncrease = () => {
     const { current } = this.state;
+    const { setMonth } = this.props;
     const nextMonth = moment(current, "MMMM")
       .add(1, "months")
       .format("MMMM");
     this.setState({
       current: nextMonth
     });
+    setMonth(nextMonth);
   };
 
   _handleDecrease = () => {
     const { current } = this.state;
+    const { setMonth } = this.props;
     const nextMonth = moment(current, "MMMM")
       .subtract(1, "months")
       .format("MMMM");
     this.setState({
       current: nextMonth
     });
+    setMonth(nextMonth);
   };
   render() {
-    const { current } = this.state;
+    const { month } = this.props;
     return (
       <div className={styles.calendar}>
         <div className={styles.calendar__month}>
@@ -48,7 +56,7 @@ class ChooseMonth extends Component {
             onClick={this._handleDecrease}
             icon="chevron-left"
           />
-          <h1>{current}</h1>
+          <h1>{month}</h1>
           <Icon
             className={styles.calendar__Changemonth}
             iconSize={24}
@@ -77,4 +85,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(ChooseMonth);
+export default connect(
+  mapStateToProps,
+  { setMonth }
+)(ChooseMonth);

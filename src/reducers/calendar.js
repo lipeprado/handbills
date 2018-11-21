@@ -8,7 +8,11 @@ export default function(state = initialState.calendar, action) {
         ...state,
         ...action.calendar
       };
-
+    case types.SET_MONTH:
+      return {
+        ...state,
+        month: action.month
+      };
     default:
       return state;
   }
