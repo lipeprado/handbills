@@ -1,1 +1,6 @@
-export { HANDBILLS_API, clearAxiosDefaults, setAxiosDefaults } from "./axios";
+export {
+  HANDBILLS_API,
+  clearAxiosDefaults,
+  setAxiosDefaults,
+  setAuthToken
+} from "./axios";

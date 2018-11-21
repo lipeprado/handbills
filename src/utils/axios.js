@@ -6,9 +6,9 @@ export const setAxiosDefaults = () => {
     "application/json; charset=utf-8";
 };
 
-export const setAuthToken = token => {
+export const setAuthToken = (token, type) => {
   if (token) {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    axios.defaults.headers.common["Authorization"] = `${type} ${token}`;
   } else {
     delete axios.defaults.headers.common["Authorization"];
   }
