@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import moment from "moment";
 
 // Actions
 import { fetchBills } from "../../actions/bills";
@@ -18,10 +19,19 @@ class Dashboard extends Component {
   };
   componentDidMount = async () => {
     const { fetchBills } = this.props;
-    const bills = await fetchBills();
+    const month = moment().format("MMMM");
+    const bills = await fetchBills(month);
     this.setState({
       bills
     });
+  };
+
+  componentWillReceiveProps = nextProps => {
+    if (this.state.bills !== nextProps.bills) {
+      this.setState({
+        bills: nextProps.bills
+      });
+    }
   };
 
   render() {

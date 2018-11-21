@@ -6,6 +6,7 @@ import { Icon } from "@blueprintjs/core";
 
 // Actions
 import { setMonth } from "../../actions/calendar";
+import { fetchBills } from "../../actions/bills";
 
 // Styles
 import styles from "./styles.module.scss";
@@ -24,7 +25,7 @@ class ChooseMonth extends Component {
 
   _handleIncrease = () => {
     const { current } = this.state;
-    const { setMonth } = this.props;
+    const { setMonth, fetchBills } = this.props;
     const nextMonth = moment(current, "MMMM")
       .add(1, "months")
       .format("MMMM");
@@ -32,11 +33,12 @@ class ChooseMonth extends Component {
       current: nextMonth
     });
     setMonth(nextMonth);
+    fetchBills(nextMonth);
   };
 
   _handleDecrease = () => {
     const { current } = this.state;
-    const { setMonth } = this.props;
+    const { setMonth, fetchBills } = this.props;
     const nextMonth = moment(current, "MMMM")
       .subtract(1, "months")
       .format("MMMM");
@@ -44,6 +46,7 @@ class ChooseMonth extends Component {
       current: nextMonth
     });
     setMonth(nextMonth);
+    fetchBills(nextMonth);
   };
   render() {
     const { month } = this.props;
@@ -87,5 +90,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { setMonth }
+  { setMonth, fetchBills }
 )(ChooseMonth);

@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import jwtDecode from "jwt-decode";
 import { onValidAuth } from "./actions/auth";
-import { setCalendar } from "./actions/calendar";
+import { setCalendar, setMonth } from "./actions/calendar";
 import { setAuthToken } from "./utils";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -35,13 +35,15 @@ function bootstrap() {
     month,
     today
   };
-  if (localStorage["token"]) {
+  store.dispatch(setCalendar(calendar));
+  store.dispatch(setMonth(month));
+  const token = localStorage.getItem("token");
+  if (token) {
     let user = localStorage.getItem("token");
     let decodeUser = jwtDecode(user);
     // verify if token is valid and search for user in database
     setAuthToken(localStorage["token"], "Bearer");
     store.dispatch(onValidAuth(decodeUser));
-    store.dispatch(setCalendar(calendar));
   }
 }
 ReactDOM.render(
