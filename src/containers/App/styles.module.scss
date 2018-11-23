@@ -1,4 +1,21 @@
 .wrapper {
   background-color: #293742;
   min-height: 100vh;
+  height: 100%;
+  position: relative;
+}
+
+.container {
+  padding: 0 2rem;
+}
+.mainPortal {
+  .portal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(41, 55, 66, 0.4);
+  }
 }

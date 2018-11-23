@@ -1,0 +1,20 @@
+.dashboard {
+  margin: 2rem 0;
+}
+.wrapperLoading {
+  position: absolute;
+  top: 60px;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  color: #5bb290;
+  span {
+    margin-right: 0.4rem;
+  }
+}
+
+.labelTitle {
+  font-size: 1.6rem;
+  color: #dfe1df;
+  margin: 0 0 1rem 0;
+}

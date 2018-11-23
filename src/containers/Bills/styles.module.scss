@@ -1,0 +1,13 @@
+.wrapperBills {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.headLine {
+  text-transform: capitalize;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #5bb290;
+}

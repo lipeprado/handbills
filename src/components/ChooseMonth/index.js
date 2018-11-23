@@ -55,14 +55,14 @@ class ChooseMonth extends Component {
         <div className={styles.calendar__month}>
           <Icon
             className={styles.calendar__Changemonth}
-            iconSize={24}
+            iconSize={16}
             onClick={this._handleDecrease}
             icon="chevron-left"
           />
           <h1>{month}</h1>
           <Icon
             className={styles.calendar__Changemonth}
-            iconSize={24}
+            iconSize={16}
             icon="chevron-right"
             onClick={this._handleIncrease}
           />

@@ -1,0 +1,16 @@
+.wrapperLogo {
+  display: flex;
+  align-items: center;
+  margin-right: 0 !important;
+  padding: 0 0.5rem;
+  span {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+}
+.logo {
+  height: 30px;
+  max-width: 100px;
+  margin-right: 5px;
+}

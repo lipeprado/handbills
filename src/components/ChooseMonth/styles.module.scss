@@ -1,9 +1,8 @@
 .calendar {
   display: flex;
   width: 100%;
-  color: #f5f8fa;
-  padding: 1rem;
-
+  color: #5bb290;
+  margin-left: 1rem;
   &__month {
     display: flex;
     justify-content: center;
@@ -11,15 +10,16 @@
     h1 {
       text-transform: capitalize;
       text-align: center;
-      min-width: 10rem;
-      font-size: 1.8rem;
+      min-width: 6.5rem;
+      font-size: 1.2rem;
       margin: 0;
+      line-height: 1;
     }
   }
   &__Changemonth {
     cursor: pointer;
     &:hover {
-      color: #dfdfdf;
+      color: darken(#5bb290, 20%);
     }
   }
 }

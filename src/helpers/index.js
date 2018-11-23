@@ -1,4 +1,6 @@
+/* eslint-disable no-sequences */
 import moment from "moment";
+import Dinero from "dinero.js";
 
 export const validateEmail = email => {
   const parse_email = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i;
@@ -38,4 +40,42 @@ export const formatSelect = data => {
       label: d
     };
   });
+};
+
+export const sumValue = arr => {
+  const total = arr.reduce((acc, amount) => {
+    return acc + parseInt(amount.value);
+  }, 0);
+  return Dinero({
+    amount: parseInt(total),
+    currency: "BRL"
+  })
+    .setLocale("pt-BR")
+    .toFormat("$0,0.00");
+};
+
+export const sumUnpaid = arr => {
+  const unpaids = arr.filter(item => !item.status);
+  const total = unpaids.reduce((acc, amount) => {
+    return acc + parseInt(amount.value);
+  }, 0);
+  return Dinero({
+    amount: parseInt(total),
+    currency: "BRL"
+  })
+    .setLocale("pt-BR")
+    .toFormat("$0,0.00");
+};
+
+export const sumPaid = arr => {
+  const unpaids = arr.filter(item => item.status);
+  const total = unpaids.reduce((acc, amount) => {
+    return acc + parseInt(amount.value);
+  }, 0);
+  return Dinero({
+    amount: parseInt(total),
+    currency: "BRL"
+  })
+    .setLocale("pt-BR")
+    .toFormat("$0,0.00");
 };

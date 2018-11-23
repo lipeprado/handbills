@@ -8,6 +8,9 @@ export default {
     isCreating: false,
     error: {}
   },
+  ui: {
+    modalOpen: false
+  },
   calendar: {
     months: null,
     days: null,
@@ -16,6 +19,7 @@ export default {
   },
   bills: {
     bills: [],
+    isCreating: false,
     isFetching: false
   }
 };
