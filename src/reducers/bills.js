@@ -37,6 +37,36 @@ export default function(state = initialState.bills, action) {
         ...state,
         isCreating: false
       };
+    case types.DELETE_BILLS_REQUEST:
+      return {
+        ...state
+      };
+
+    case types.DELETE_BILL_SUCCESS:
+      const filtred = state.bills.filter(bill => action.id !== bill.id);
+      debugger;
+      return {
+        ...state,
+        bills: filtred
+      };
+    case types.DELETE_BILL_FAILED:
+      return {
+        ...state
+      };
+    case types.CHANGE_STATUS_SUCCESS:
+      return {
+        ...state,
+        bills: state.bills.map(bill => {
+          if (bill.id === action.bill.id) {
+            return {
+              ...bill,
+              status: !bill.status
+            };
+          } else {
+            return bill;
+          }
+        })
+      };
     default:
       return state;
   }

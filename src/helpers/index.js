@@ -59,6 +59,7 @@ export const sumUnpaid = arr => {
   const total = unpaids.reduce((acc, amount) => {
     return acc + parseInt(amount.value);
   }, 0);
+  console.log({ arr, unpaids });
   return Dinero({
     amount: parseInt(total),
     currency: "BRL"
@@ -78,4 +79,26 @@ export const sumPaid = arr => {
   })
     .setLocale("pt-BR")
     .toFormat("$0,0.00");
+};
+
+export const balance = (bills, revenue) => {
+  const total = bills.reduce((acc, amount) => {
+    return acc + parseInt(amount.value);
+  }, 0);
+  const bal = revenue - total;
+  const value = Dinero({
+    amount: parseInt(bal),
+    currency: "BRL"
+  })
+    .setLocale("pt-BR")
+    .toFormat("$0,0.00");
+  if (total === 0) {
+    return Dinero({
+      amount: parseInt(total),
+      currency: "BRL"
+    })
+      .setLocale("pt-BR")
+      .toFormat("$0,0.00");
+  }
+  return value;
 };

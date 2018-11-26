@@ -61,3 +61,44 @@ export const createBill = bill => {
     }
   };
 };
+
+export const deleteBillRequest = () => ({ type: types.DELETE_BILLS_REQUEST });
+
+export const deleteBillSuccess = id => ({
+  type: types.DELETE_BILL_SUCCESS,
+  id
+});
+export const deleteBillFailed = error => ({
+  type: types.DELETE_BILL_FAILED,
+  error
+});
+
+export const deleteBill = id => {
+  return async dispatch => {
+    try {
+      dispatch(deleteBillRequest());
+      const res = await HANDBILLS_API.delete(`/bills/${id}`);
+      dispatch(deleteBillSuccess(id));
+      return res.data;
+    } catch (error) {
+      deleteBillFailed(error);
+    }
+  };
+};
+
+export const statusBillSuccess = bill => ({
+  type: types.CHANGE_STATUS_SUCCESS,
+  bill
+});
+
+export const statusBill = id => {
+  return async dispatch => {
+    try {
+      const res = await HANDBILLS_API.patch(`/bills/${id}`);
+      dispatch(statusBillSuccess(res.data.billsUpdated[0]));
+      return res.data;
+    } catch (error) {
+      return { error };
+    }
+  };
+};
